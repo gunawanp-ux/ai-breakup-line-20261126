@@ -15,6 +15,9 @@ LINE = (
 
 
 def main() -> None:
+    # The gate accepts 1 to 200 characters; fail loudly if a future edit
+    # ever pushes the line outside it instead of being scored invalid.
+    assert 1 <= len(LINE) <= 200, f"line is {len(LINE)} chars, outside the 1-200 gate"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(LINE)
